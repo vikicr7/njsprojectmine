@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "devops-extended-demo"
+        IMAGE_NAME = "joke"
         DOCKER_USER = "vikicr7"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourusername/devops-extended-demo.git'
+                git 'https://github.com/vikicr7/njsprojectmine.git'
             }
         }
 
@@ -41,8 +41,8 @@ pipeline {
             steps {
                 // requires Jenkins credentials: ec2-ssh-key (SSH private key) and configured ssh-agent plugin
                 sshagent(['ec2-ssh-key']) {
-                    sh 'scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null deploy.sh vikicr7@<EC2-IP>:/home/ubuntu/'
-                    sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null vikicr7@<EC2-IP> "chmod +x deploy.sh && ./deploy.sh"'
+                    sh 'scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null deploy.sh vikicr7@3.109.186.0:/home/ubuntu/'
+                    sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null vikicr7@3.109.186.0 "chmod +x deploy.sh && ./deploy.sh"'
                 }
             }
         }

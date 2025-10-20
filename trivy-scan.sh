@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE_NAME="devops-extended-demo:latest"
+IMAGE_NAME="joke:latest"
 echo "🔍 Running Trivy scan for image: $IMAGE_NAME ..."
 trivy image --exit-code 0 --severity CRITICAL,HIGH $IMAGE_NAME
 RC=$?
