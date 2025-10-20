@@ -8,8 +8,11 @@ pipeline {
 
     stages {
         stage('Checkouti') {
+        
             steps {
-                git 'https://github.com/vikicr7/njsprojectmine.git'
+                git branch: 'main', url: 'https://github.com/vikicr7/njsprojectmine.git'
+             }
+
             }
         }
 
@@ -41,8 +44,8 @@ pipeline {
             steps {
                 // requires Jenkins credentials: ec2-ssh-key (SSH private key) and configured ssh-agent plugin
                 sshagent(['ec2-ssh-key']) {
-                    sh 'scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null deploy.sh vikicr7@3.109.186.0:/home/ubuntu/'
-                    sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null vikicr7@3.109.186.0 "chmod +x deploy.sh && ./deploy.sh"'
+                    sh 'scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null deploy.sh ubuntu@3.109.186.0:/home/ubuntu/'
+                    sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@3.109.186.0 "chmod +x deploy.sh && ./deploy.sh"'
                 }
             }
         }
