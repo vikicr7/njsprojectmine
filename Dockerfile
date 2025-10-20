@@ -1,18 +1,21 @@
-# Base image
+# Use official Node.js 18 image
 FROM node:18
 
 # Set working directory
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY app/package*.json ./
+COPY package*.json ./
 RUN npm install --production
 
-# Copy source code
-COPY app/ .
+# Copy all source code into the container
+COPY . .
 
-# Expose app port
+# Expose application port
 EXPOSE 8080
 
-# Start app
-CMD [ "npm", "start" ]
+# Set environment
+ENV NODE_ENV=production
+
+# Start the app
+CMD ["npm", "start"]
