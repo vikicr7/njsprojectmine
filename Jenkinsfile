@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkouti') {
             steps {
                 git 'https://github.com/vikicr7/njsprojectmine.git'
             }
