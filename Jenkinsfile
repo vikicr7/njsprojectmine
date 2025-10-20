@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Trivy Scanns') {
+        stage('Trivy Scannsi:') {
             steps {
                 sh 'chmod +x trivy-scan.sh && ./trivy-scan.sh'
             }
